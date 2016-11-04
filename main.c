@@ -15,6 +15,7 @@ int **allocmap(int n);
 void mapprint(int n, int **map);
 void randmap(int dim, int n, int **map);
 int check(int n, int **map);
+void gmove(int n, int **map);
 
 int main(int argc, const char * argv[]) {
     int **map=allocmap(N), go=1;
@@ -25,17 +26,22 @@ int main(int argc, const char * argv[]) {
     
     while(go)
     {
+        gmove(N, map);
         randmap(N, 1, map);
-        system("clear");
         go=check(N, map);
+        system("clear");
         mapprint(N, map);
     }
     
     return 0;
 }
 
-int check(int n, int **map) {
+void gmove(int n, int **map) {
     
+}
+
+int check(int n, int **map) {
+    return 1;
 }
 
 void randmap(int dim, int n, int **map) {
@@ -43,7 +49,11 @@ void randmap(int dim, int n, int **map) {
     srand(time(NULL));
     for(r=0;r<n;r++)
     {
-        i=rand()%dim; j=rand()%dim; map[i][j]=2;
+        i=rand()%dim; j=rand()%dim;
+        if(map[i][j]!=0)
+            map[i][j]=2;
+        else
+            r--;
     }
 }
 

@@ -95,13 +95,14 @@ void randmap(int dim, int n, int **map) {
 }
 
 int **allocmap(int n) {
+    int i,j;
     //matrix N*N of Integer
     int **matrix=malloc(n*sizeof(int *));
-    for(int i=0; i<n; i++)
+    for(i=0; i<n; i++)
         matrix[i]=malloc(n*sizeof(int));
     //clean matrix
-    for(int i=0;i<n;i++)
-        for(int j=0;j<n;j++)
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
             matrix[i][j]=0;
     
     return matrix;
